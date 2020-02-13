@@ -8,55 +8,224 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <title>Hncc-valentine-game</title>
+    <style>
+
+    	body { 
+    		background-image:url('https://media.giphy.com/media/9LWa98hLh2eGaMiqEW/source.gif');
+    		background-repeat:no-repeat;
+               background-size:cover;
+               background-position: center;
+               border:none;
+               width: 100%;
+               height: auto; 
+
+
+    		font-family: 'Love Ya Like A Sister', cursive;
+
+
+    	}
+
+    	.nameBox{
+    		background:transparent;
+    		border:none;
+    		border-bottom:.2em solid black;
+    	}
+    	.msgBox{
+    		background:transparent;
+    		border:none;
+    		border-bottom:.2em solid black;
+    	}
+
+    	.button{
+    		width: 20em;
+    		background:none;
+    		color: black;
+    		border-radius: 4em;
+    		border: 2px solid black;
+    		padding-top: .2em;
+    		padding-bottom: .2em;
+    	}
+
+    	.board{
+    		margin-left: auto;
+    		margin-right: auto;
+    	}
+
+    	.msg-board{
+    		margin-right: auto;
+    		margin-left: auto;
+    		position: center;
+    		background:transparent;
+    		color: black;
+    		font-size: 2em;
+
+    	}
+
+    	.board{
+    		text-align: center;
+    		margin-top: 3em;
+
+    	}
+    	.board-btn{
+    		display: inline-block;
+    	}
+
+    	.button:hover{
+    		background-image: linear-gradient(90deg,#ec008c, #fc6767);
+    		transition: 1s;
+    	}
+		    	/* form starting stylings ------------------------------- */
+		.group 			  { 
+		  position:relative; 
+		  margin-bottom:45px; 
+		}
+		input 				{
+
+		  padding:10px 10px 10px 5px;
+		  display:block;
+		  width:300px;
+		  border:none;
+		  border-bottom:1px solid #757575;
+		}
+		input:focus 		{ outline:none; }
+
+		/* LABEL ======================================= */
+		label 				 {
+		  color:#999; 
+		  font-size:18px;
+		  font-weight:normal;
+		  position:absolute;
+		  pointer-events:none;
+		  left:5px;
+		  top:10px;
+		  transition:0.2s ease all; 
+		  -moz-transition:0.2s ease all; 
+		  -webkit-transition:0.2s ease all;
+		}
+
+		/* active state */
+		input:focus ~ label, input:valid ~ label 		{
+		  top:-20px;
+		  font-size:14px;
+		  color:#5264AE;
+		}
+
+		/* BOTTOM BARS ================================= */
+		.bar 	{ position:relative; display:block; width:300px; }
+		.bar:before, .bar:after 	{
+		  content:'';
+		  height:2px; 
+		  width:0;
+		  bottom:1px; 
+		  position:absolute;
+		  background:#5264AE; 
+		  transition:0.2s ease all; 
+		  -moz-transition:0.2s ease all; 
+		  -webkit-transition:0.2s ease all;
+		}
+		.bar:before {
+		  left:50%;
+		}
+		.bar:after {
+		  right:50%; 
+		}
+
+		/* active state */
+		input:focus ~ .bar:before, input:focus ~ .bar:after {
+		  width:50%;
+		}
+
+		/* HIGHLIGHTER ================================== */
+		.highlight {
+		  position:absolute;
+		  height:60%; 
+		  width:100px; 
+		  top:25%; 
+		  left:0;
+		  pointer-events:none;
+		  opacity:0.5;
+		}
+
+		/* active state */
+		input:focus ~ .highlight {
+		  -webkit-animation:inputHighlighter 0.3s ease;
+		  -moz-animation:inputHighlighter 0.3s ease;
+		  animation:inputHighlighter 0.3s ease;
+		}
+
+		/* ANIMATIONS ================ */
+		@-webkit-keyframes inputHighlighter {
+			from { background:#5264AE; }
+		  to 	{ width:0; background:transparent; }
+		}
+		@-moz-keyframes inputHighlighter {
+			from { background:#5264AE; }
+		  to 	{ width:0; background:transparent; }
+		}
+		@keyframes inputHighlighter {
+			from { background:#5264AE; }
+		  to 	{ width:0; background:transparent; }
+		}
+
+
+
+
+    </style>
+
+	<link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister&display=swap" rel="stylesheet">
+
+
   </head>
   <body>
+  	<h1 style="text-align: center; padding-top: 2em;">devELOPED</h1>
 
-  	<section>
+	<div class="board">
+	    <form class="board-btn" action=" {% url 'all-msg'%} " method="POST" >
+			        	{% csrf_token %}
+		<button type="submit" class="btn btn-danger msg-board">Check the LOVEboard</button>
+			        	
+		</form>
+	</div>
 
-  		<nav class="navbar navbar-expand-lg navbar-light bg-dark">
-		  
-		  <div class="collapse navbar-collapse container" id="navbarSupportedContent">
-		    <ul class="navbar-nav ml-auto">
-		      <li class="nav-item active">
-		        <form action=" {% url 'all-msg'%} " method="POST" >
-		        	{% csrf_token %}
-		        	<button type="submit" class="btn btn-danger">Click </button>
-		        	}
-		        </form>
-		      </li>
-		     
-		      </li>
-		      
-		    </ul>
-
-		  </div>
-		</nav>
-  	</section>
-
-
-    <br> <br><br><br><br><br><br><br><br><br>
+    <br> <br><br><br><br><br><br><br>
     <div class="container">
 	  	<div class="row">
-		    <div class="col-sm">
+		    <div class="col-md">
 		      <!-- One of three columns -->
 		    </div>
-		    <div class="col-sm">
+		    <div class="col-md">
 		      
 		      <div>
 		      	<form action=" {% url 'home'%} " method="POST">
 		      		{% csrf_token %}
 				  <div class="form-group">
-				    <label for="exampleInputEmail1">Enter Your name ..</label>
-				    <input type="text" class="form-control" id="name" name="user-name" placeholder="Enter Name">
-				    <label for="exampleFormControlTextarea1">Enter message :</label>
-				    <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="5"></textarea>
+				  	<div class="group">      
+				    <label for="exampleInputEmail1"></label>
+				    <input class="nameBox" type="text" class="form-control" id="name" name="user-name" placeholder="Who's this?">
+				    
+				    <span class="highlight"></span>
+      				<span class="bar"></span>
+      			    </div>
+
+      			<div class="group"> 
+
+      				<span class="highlight"></span>
+      				<span class="bar"></span>
+
+				    <label for="exampleFormControlTextarea1"></label>
+				    <textarea class="msgBox form-control" name="message" id="exampleFormControlTextarea1" rows="5" placeholder="Yes! Confess to that girl/boy here!!!!!"></textarea>
 				  </div>
-				  <button type="submit" class="btn btn-primary">Send</button>
+				</div>
+				  <button type="submit" class=" button" id="heart"><main role='main'>
+				  <i class="fa fa-heart" aria-hidden="true"></i>
+				</main>Send</button>
 				</form>
 		      </div>
 		    </div>
-		    <div class="col-sm">
+		    <div class="col-md">
 		      <!-- One of three columns -->
 		      <br><br>
 		      
